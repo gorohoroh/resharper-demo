@@ -53,6 +53,12 @@ namespace ReSharper_Demo
                 throw new Exception(string.Format("Empty type '{0}'", type.GetType())); // Use string interpolation + possible NRE
             }
 
+            if (vals == null)
+            {
+                throw new ArgumentNullException("vals"); // Use 'nameof' expression
+            }
+
+
             bool serializable = (type != null && type is Abstraction); // Merge sequential checks
 
         }
