@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
@@ -40,11 +41,16 @@ namespace ReSharper_Demo
             
         }
 
-        private void GuessType(object param, object type)
+        private void GuessType(object param, IEnumerable vals, object type)
         {
             if (param == null)
             {
                 throw new ArgumentNullException("param", "Type can not be guessed for a null value."); // Use 'nameof' expression
+            }
+
+            if (type == null)
+            {
+                throw new Exception(string.Format("Empty type '{0}'", type.GetType())); // Use string interpolation + possible NRE
             }
 
             bool serializable = (type != null && type is Abstraction); // Merge sequential checks
