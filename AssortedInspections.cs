@@ -51,7 +51,18 @@ namespace ReSharper_Demo
 
         }
 
-
+        [UsedImplicitly]
+        private static void ProcessParams(string[] parameters)
+        {
+            for (int i = 0; i < parameters.Length; i++) // 'for' can be converted into 'foreach'
+            {
+                var namedParam = parameters[i];
+                if (namedParam != null)
+                {
+                    break;
+                }
+            }
+        }
     }
 
     class SuspiciousCast
