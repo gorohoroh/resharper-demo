@@ -15,10 +15,12 @@ namespace ReSharper_Demo
         private string _alias; // Naming
         private int _scalarColumnIndex;
         [UsedImplicitly] private string comment;
+        private bool? readOnly;
 
-        public AssortedInspections(string alias)
+        public AssortedInspections(string alias, bool? readOnly)
         {
             _alias = alias;
+            this.readOnly = readOnly;
         }
 
         [UsedImplicitly]
@@ -36,6 +38,13 @@ namespace ReSharper_Demo
             this.comment = comment;
             return this;
         }
+
+        public bool IsReadOnly
+        {
+            // ReSharper disable once ConvertPropertyToExpressionBody
+            get { return readOnly == null ? true : readOnly.Value; } // Merge conditional expression into conditional access
+        }
+
 
 
         void Process(object item)
