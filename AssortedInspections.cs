@@ -39,6 +39,7 @@ namespace ReSharper_Demo
             return this;
         }
 
+        [UsedImplicitly]
         public bool IsReadOnly
         {
             // ReSharper disable once ConvertPropertyToExpressionBody
@@ -63,6 +64,7 @@ namespace ReSharper_Demo
             
         }
 
+        [UsedImplicitly]
         private void GuessType(object param, IEnumerable vals, object type)
         {
             if (param == null)
@@ -103,6 +105,7 @@ namespace ReSharper_Demo
         private readonly HashSet<IDataReader> readersToClose = new HashSet<IDataReader>();
         // Collection is never updated
 
+        [UsedImplicitly]
         protected void CheckReaders()
         {
             foreach (NHybridDataReader reader in readersToClose)
@@ -115,6 +118,7 @@ namespace ReSharper_Demo
         }
     }
 
+    [UsedImplicitly]
     class InvalidCast
     {
         // Source: http://www.dotnetperls.com/invalidcastexception
@@ -134,6 +138,7 @@ namespace ReSharper_Demo
         }
     }
 
+    [UsedImplicitly]
     class AbstractionImpl : Abstraction
     {
     }
@@ -143,3 +148,5 @@ namespace ReSharper_Demo
 // TODO Field initializer value ignored during initialization: NHibernate, AbstractQueryImpl.cs
 // TODO Possible multiple enumeration
 // TODO Possible unintended reference comparison: NHibernate, AbstractQueryImpl.cs
+// TODO Method return value is never used: NHibernate, AbstractQueryImpl.cs
+// TODO Simplify LINQ expression: NHibernate, NH2459/Test.cs
