@@ -22,6 +22,9 @@ namespace ReSharper_Demo
         }
 
         [UsedImplicitly]
+        internal protected string Comment => comment; // Inconsistent order of modifiers
+
+        [UsedImplicitly]
         public string Alias // Convert to auto-property
         {
             get { return _alias; } // Convert to expression body
