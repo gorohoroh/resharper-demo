@@ -40,6 +40,15 @@ namespace ReSharper_Demo
             
         }
 
+        private void GuessType(object param)
+        {
+            if (param == null)
+            {
+                throw new ArgumentNullException("param", "Type can not be guessed for a null value."); // Use 'nameof' expression
+            }
+        }
+
+
     }
 
     class SuspiciousCast
@@ -70,11 +79,6 @@ namespace ReSharper_Demo
         }
     }
 
-    class InvalidCast2
-    {
-        // TODO Possible InvalidCastException when casting A to B in foreach loop: NHibernate, FilterKey.cs 
-    }
-
     public abstract class Abstraction
     {
         [UsedImplicitly]
@@ -87,3 +91,8 @@ namespace ReSharper_Demo
     {
     }
 }
+
+// TODO Possible InvalidCastException when casting A to B in foreach loop: NHibernate, FilterKey.cs 
+// TODO Field initializer value ignored during initialization: NHibernate, AbstractQueryImpl.cs
+// TODO Possible multiple enumeration
+// TODO Possible unintended reference comparison: NHibernate, AbstractQueryImpl.cs
