@@ -40,12 +40,15 @@ namespace ReSharper_Demo
             
         }
 
-        private void GuessType(object param)
+        private void GuessType(object param, object type)
         {
             if (param == null)
             {
                 throw new ArgumentNullException("param", "Type can not be guessed for a null value."); // Use 'nameof' expression
             }
+
+            bool serializable = (type != null && type is Abstraction); // Merge sequential checks
+
         }
 
 
