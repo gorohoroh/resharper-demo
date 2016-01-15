@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
 using System.IO;
+using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 
@@ -13,6 +14,7 @@ namespace ReSharper_Demo
     {
         private string _alias; // Naming
         private int _scalarColumnIndex;
+        [UsedImplicitly] private string comment;
 
         public AssortedInspections(string alias)
         {
@@ -24,6 +26,14 @@ namespace ReSharper_Demo
         {
             get { return _alias; } // Convert to expression body
         }
+
+        [UsedImplicitly]
+        public AssortedInspections SetComment(string comment) // Parameter hides field
+        {
+            this.comment = comment;
+            return this;
+        }
+
 
         void Process(object item)
         {
@@ -50,14 +60,13 @@ namespace ReSharper_Demo
 
             if (type == null)
             {
-                throw new Exception(string.Format("Empty type '{0}'", type.GetType())); // Use string interpolation + possible NRE
+                throw new ArgumentNullException(string.Format("Empty type '{0}'", type.GetType())); // Use string interpolation + possible NRE
             }
 
             if (vals == null)
             {
                 throw new ArgumentNullException("vals"); // Use 'nameof' expression
             }
-
 
             bool serializable = (type != null && type is Abstraction); // Merge sequential checks
 
