@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
 using System.IO;
-using System.Linq;
+using System.Linq; // Redundant using directive
 using System.Text;
 using JetBrains.Annotations;
 
-namespace ReSharper_Demo
+namespace ReSharper.Showcase // Namespace doesn't correspond to file location
 {
     public class AssortedInspections
     {
@@ -150,3 +150,5 @@ namespace ReSharper_Demo
 // TODO Possible unintended reference comparison: NHibernate, AbstractQueryImpl.cs
 // TODO Method return value is never used: NHibernate, AbstractQueryImpl.cs
 // TODO Simplify LINQ expression: NHibernate, NH2459/Test.cs
+// TODO Introduce optional parameters: NHibernate, SqlBaseBuilder.cs
+// TODO Use String.IsNullOrEmpty: NHibernate, SqlBaseBuilder.cs
