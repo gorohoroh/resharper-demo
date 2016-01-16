@@ -126,7 +126,7 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
         {
             StringBuilder reference1 = new StringBuilder();
             object reference2 = reference1;
-            StreamReader reference3 = (StreamReader) reference2;
+            StreamReader reference3 = (StreamReader) reference2; // Possible InvalidCastException
         }
     }
 
@@ -139,8 +139,9 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
     }
 
     [UsedImplicitly]
-    internal class AbstractionImpl : Abstraction // Inconsistent modifier style
+    internal class AbstractionImpl : Abstraction // Inconsistent modifier style; Class has virtual members but no inheritors
     {
+        public virtual string ImplementationSpecific { get; set; }
     }
 }
 
