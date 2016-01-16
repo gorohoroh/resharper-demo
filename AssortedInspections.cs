@@ -40,6 +40,15 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
         }
 
         [UsedImplicitly]
+        Customer SetupCustomer(int id) // Missing private modifier
+        {
+            Customer customer = new Customer(); // Use var; use object initializer
+            customer.Id = id;
+            customer.Name = "Fanye East";
+            return customer;
+        }
+
+        [UsedImplicitly]
         public bool IsReadOnly
         {
             // ReSharper disable once ConvertPropertyToExpressionBody
@@ -142,6 +151,12 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
     internal class AbstractionImpl : Abstraction // Inconsistent modifier style; Class has virtual members but no inheritors
     {
         public virtual string ImplementationSpecific { get; set; }
+    }
+
+    class Customer
+    {
+        [UsedImplicitly] public string Name { get; set; }
+        [UsedImplicitly] public int Id { get; set; } 
     }
 }
 
