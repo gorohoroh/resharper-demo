@@ -139,7 +139,7 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
     }
 
     [UsedImplicitly]
-    class AbstractionImpl : Abstraction
+    internal class AbstractionImpl : Abstraction // Inconsistent modifier style
     {
     }
 }
@@ -152,3 +152,4 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
 // TODO Simplify LINQ expression: NHibernate, NH2459/Test.cs
 // TODO Introduce optional parameters: NHibernate, SqlBaseBuilder.cs
 // TODO Use String.IsNullOrEmpty: NHibernate, SqlBaseBuilder.cs
+// TODO Possible ambiguity while accessing by this interface: NHibernate, ISetSnapshot.cs
