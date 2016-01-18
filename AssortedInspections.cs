@@ -179,3 +179,6 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
 // TODO Use String.IsNullOrEmpty: NHibernate, SqlBaseBuilder.cs
 // TODO Possible ambiguity while accessing by this interface: NHibernate, ISetSnapshot.cs
 // TODO Convert to auto-property with private setter: NHibernate, Join.cs
+// TODO Loop can be converted into LINQ expression: NHibernate, Table.cs, foreach (Column column in ColumnIterator)
+// TODO Convert to constant: NHibernate, IPersistentIdentifierGenerator.cs
+// TODO Check for reference equality instead: NHibernate, AliasToBeanResultTransformer.cs
