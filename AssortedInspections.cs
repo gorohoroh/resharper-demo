@@ -106,6 +106,15 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
                     break;
                 }
             }
+
+            if (parameters != null) // 'if' statement can be rewritten as '?:' expression; Expression is always true
+            {
+                Console.WriteLine("Parameters are OK");
+            }
+            else
+            {
+                Console.WriteLine("Empty parameters"); // Code is heuristically unreachable
+            }
         }
     }
 
@@ -169,3 +178,4 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
 // TODO Introduce optional parameters: NHibernate, SqlBaseBuilder.cs
 // TODO Use String.IsNullOrEmpty: NHibernate, SqlBaseBuilder.cs
 // TODO Possible ambiguity while accessing by this interface: NHibernate, ISetSnapshot.cs
+// TODO Convert to auto-property with private setter: NHibernate, Join.cs
