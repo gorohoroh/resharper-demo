@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlTypes;
 using System.IO;
 using System.Linq; // Redundant using directive
+using System.Reflection;
 using System.Text;
 using JetBrains.Annotations;
 
@@ -55,9 +56,7 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
             get { return readOnly == null ? true : readOnly.Value; } // Merge conditional expression into conditional access
         }
 
-
-
-        void Process(object item)
+        void Process(object item) // Method is recursive on all execution paths
         {
             if (item != null) // Use null propagation
             {
@@ -89,6 +88,13 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
             if (vals == null)
             {
                 throw new ArgumentNullException("vals"); // Use 'nameof' expression
+            }
+
+            if (type == typeof(int)) // Possible unintended reference comparison
+            {
+                // Source: http://stackoverflow.com/questions/9234009/c-sharp-type-comparison-type-equals-vs-operator
+                Type type = new TypeDelegator(typeof(int)); // Merge variables
+                Console.WriteLine(type.Equals(typeof(int))); // Check for reference equality instead
             }
 
             bool serializable = (type != null && type is Abstraction); // Merge sequential checks
