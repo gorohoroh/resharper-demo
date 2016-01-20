@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlTypes;
 using System.IO;
 using System.Linq; // Redundant using directive
+using System.Net;
 using System.Reflection;
 using System.Text;
 using JetBrains.Annotations;
@@ -56,6 +57,7 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
             get { return readOnly == null ? true : readOnly.Value; } // Merge conditional expression into conditional access
         }
 
+        [UsedImplicitly]
         void Process(object item) // Method is recursive on all execution paths
         {
             if (item != null) // Use null propagation
@@ -67,9 +69,20 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
         }
 
         [UsedImplicitly]
+        private WebRequest ReturnRequest(object url)
+        {
+            if (url is Uri)
+            {
+                WebRequest request = HttpWebRequest.Create(url as Uri); // Access to a static member via a derived type; Safe cast always succeeds
+                return request;
+            }
+            return null;
+        }
+
+        [UsedImplicitly]
         void GetSQL(SqlString sqlString) // Naming, with an option to add abbreviation
         {
-            
+
         }
 
         [UsedImplicitly]
