@@ -126,18 +126,17 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
 
     class SuspiciousCast
     {
-        private readonly HashSet<IDataReader> readersToClose = new HashSet<IDataReader>();
-        // Collection is never updated
+        private readonly HashSet<IDataReader> readersToClose = new HashSet<IDataReader>(); // Content of collection is never updated
 
         [UsedImplicitly]
         protected void CheckReaders()
         {
-            foreach (NHybridDataReader reader in readersToClose)
+            foreach (NHybridDataReader reader in readersToClose) // Suspicious cast
             {
             }
         }
 
-        internal class NHybridDataReader
+        internal class NHybridDataReader // Member can be made private; Class is never instantiated
         {
         }
     }
@@ -188,3 +187,4 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
 // TODO Loop can be converted into LINQ expression: NHibernate, Table.cs, foreach (Column column in ColumnIterator)
 // TODO Convert to constant: NHibernate, IPersistentIdentifierGenerator.cs
 // TODO Check for reference equality instead: NHibernate, AliasToBeanResultTransformer.cs
+// TODO The given expression of 'is' operator is always of the provided type: NHibernate, QueryOverFixture.cs
