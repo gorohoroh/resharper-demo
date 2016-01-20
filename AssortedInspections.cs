@@ -90,6 +90,11 @@ namespace ReSharper.Showcase // Namespace doesn't correspond to file location
                 throw new ArgumentNullException("vals"); // Use 'nameof' expression
             }
 
+            if (!(param.ToString() == "check")) // Simplify negative equality expression
+            {
+                
+            }
+
             if (type == typeof(int)) // Possible unintended reference comparison
             {
                 // Source: http://stackoverflow.com/questions/9234009/c-sharp-type-comparison-type-equals-vs-operator
